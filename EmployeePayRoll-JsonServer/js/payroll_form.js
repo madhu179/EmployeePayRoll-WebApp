@@ -28,6 +28,7 @@ const save = () => {
     let employeePayrollData;
     try{
         employeePayrollData = createEmployeePayroll();
+        createAndUpdateStorage(employeePayrollData);
     }catch(e){
         return;
     }
@@ -62,4 +63,18 @@ const getSelectedValues = (propertyValue) => {
         selItems.push(item.value);
     });
     return selItems;
+}
+
+function createAndUpdateStorage(employeePayrollData){
+    let employeePayrollList = JSON.parse(localStorage.getItem("EmployeePeyrollList"));
+
+    if(employeePayrollList != undefined){
+        employeePayrollList.push(EmployeePayrollData);
+    }
+    else{
+        employeePayrollList = [employeePayrollData];
+    }
+
+    alert(employeePayrollList.toString());
+    localStorage.setItem("EmployeePeyrollList",JSON.stringify(employeePayrollList));
 }
