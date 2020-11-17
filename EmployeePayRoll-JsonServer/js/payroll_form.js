@@ -25,9 +25,8 @@ salary.addEventListener('input',function () {
 
 
 const save = () => {
-    let employeePayrollData;
     try{
-        employeePayrollData = createEmployeePayroll();
+        let employeePayrollData = createEmployeePayroll();
         createAndUpdateStorage(employeePayrollData);
     }catch(e){
         return;
@@ -69,7 +68,7 @@ function createAndUpdateStorage(employeePayrollData){
     let employeePayrollList = JSON.parse(localStorage.getItem("EmployeePeyrollList"));
 
     if(employeePayrollList != undefined){
-        employeePayrollList.push(EmployeePayrollData);
+        employeePayrollList.push(employeePayrollData);
     }
     else{
         employeePayrollList = [employeePayrollData];
