@@ -85,13 +85,16 @@ class EmployeePayRollData{
 
     set startDate(startDate)
     {
-        let datee = new Date();
-        if(startDate<=datee)
+        let now = new Date();
+        if(startDate<=now)
         {
+            var diff = Math.abs(now.getTime() - startDate.getTime());
+            if(diff/(1000*60*60*24) > 30)
+            throw 'Start Date is beyond 30 Days';
         this._startDate = startDate;
         }
         else
-        throw 'StratDate is incorrect';
+        throw 'Strat Date is a Future Date';
     }
 
     toString()
