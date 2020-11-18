@@ -1,7 +1,6 @@
 let empPayrollList;
 window.addEventListener('DOMContentLoaded',(event) => {
   empPayrollList = getEmployeePayrollDataFromStorage();
-  // console.log(empPayrollList.length);
   document.querySelector(".emp-count").textContent = empPayrollList.length;
   createInnerHtml();
   localStorage.removeItem('editEmp');
@@ -37,9 +36,9 @@ const createInnerHtml = () => {
       <td>${empPayrollData._salary}</td>
       <td>${stringifyDate(empPayrollData._startDate)}</td>
       <td>
-      <img name="${empPayrollData._id}" onclick="removie(this)" alt="delete" 
+      <img id="${empPayrollData._id}" onclick="remove(this)" alt="delete" 
               src="../assets/icons/delete-black-18dp.svg">
-      <img name="${empPayrollData._id}" alt="edit" onclick="update(this)"
+      <img id="${empPayrollData._id}" alt="edit" onclick="update(this)"
               src="../assets/icons/create-black-18dp.svg">
       </td>
   </tr>
@@ -56,31 +55,13 @@ for(const dept of deptList){
 return deptHtml;
 }
 
-const createEmployeePayrollJSON = () => {
-  let empPayrollListLocal = [
-  {
-    _name: 'Anthony Stark',
-    _gender: 'male',
-    _department: [
-      'Finance',
-      'Engineer'
-    ],
-    _salary: '499999',
-    _startDate: '14 May 2016',
-    _note: 'Hi There',
-    _id: new Date().getTime(),
-    _profilePic: '../assets/profile-images/Ellipse -3.png'
-  },
-  {
-    _name: 'Natasha',
-    _gender: 'female',
-    _department: ['Others'],
-    _salary: '299999',
-    _startDate: '21 Feb 2020',
-    _note: 'Hello',
-    _id: new Date().getTime(),
-    _profilePic: '../assets/profile-images/Ellipse -1.png'
-  }
-  ];
-  return empPayrollListLocal;
+const remove = (node) => {
+  let empPayrollData = empPayrollList.find(employee => node.id == employee._id);
+  if(!empPayrollData) return;
+  const index = empPayrollList.map(employee => employee._id)
+                              .indexOf(empPayrollData._id);
+  empPayrollList.splice(index,1);
+  document.querySelector(".emp-count").textContent = empPayrollList.length;
+  localStorage.setItem("EmployeePayrollList",JSON.stringify(empPayrollList));
+  createInnerHtml();
 }
