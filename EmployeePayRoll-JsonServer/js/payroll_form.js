@@ -34,7 +34,16 @@ const save = () => {
 }
 
 const createEmployeePayroll = () => {
+    let employeePayrollList = JSON.parse(localStorage.getItem("EmployeePayrollList"));
+    let max = 0;
+    if(employeePayrollList){
+        for(const empData of employeePayrollList){
+            if(max<empData._id)
+            max = empData._id;
+        }
+    }
     let employeePayrollData = new EmployeePayRollData();
+    employeePayrollData.id = parseInt(max) + 1;
     employeePayrollData.name = getInputValueById('#name');
     employeePayrollData.profilePic = getSelectedValues('[name=profile]').pop();
     employeePayrollData.gender = getSelectedValues('[name=gender]').pop();
