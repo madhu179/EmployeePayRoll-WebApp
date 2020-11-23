@@ -49,6 +49,7 @@ const save = (event) => {
         resetForm();
         window.location.replace(site_properties.home_page);
     }catch(e){
+        console.log(e);
         console.log("problem");
         return;
     }
