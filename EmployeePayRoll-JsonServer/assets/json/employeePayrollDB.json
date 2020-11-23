@@ -36,22 +36,6 @@
       "_note": "",
       "_profilePic": "../assets/profile-images/Ellipse -1.png",
       "id": 3
-    },
-    {
-      "_name": "Ajim premji",
-      "_profilePic": "../assets/profile-images/Ellipse -8.png",
-      "_gender": "male",
-      "_department": [
-        "HR",
-        "Sales",
-        "Finance",
-        "Engineer",
-        "Others"
-      ],
-      "_salary": "484800",
-      "_note": "He is the best of all",
-      "_startDate": "2020-11-16T18:30:00.000Z",
-      "id": 4
     }
   ]
 }
