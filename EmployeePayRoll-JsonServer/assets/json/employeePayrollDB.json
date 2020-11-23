@@ -44,10 +44,12 @@
       "_department": [
         "HR",
         "Sales",
-        "Finance"
+        "Finance",
+        "Engineer",
+        "Others"
       ],
-      "_salary": "461100",
-      "_note": "He is the best",
+      "_salary": "484800",
+      "_note": "He is the best of all",
       "_startDate": "2020-11-16T18:30:00.000Z",
       "id": 4
     }
